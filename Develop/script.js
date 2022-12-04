@@ -1,24 +1,16 @@
-// Assignment code here
-
 //create generatePassword function
 function generatePassword() {
   let upperChars = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
   let lowerChars = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
   let specialChars = ["@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "=", "+"];
   let numChars = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9",]
-  //Prompt the user upon button click for the password criteria
+  //Prompt the user for the password criteria
   let criteriaLength = confirm("Would you like to specify your own password length?");
-  let criteriaUpper = confirm("Would you like to use Uppercase letters in your password?");   //  Lowercase, uppercase, numeric, and/or special characters?
-  let criteriaLower = confirm("Would you like to use lowercase letters in your password?");
-  let criteriaSpecial = confirm("Would you like to use special characters (!@# etc) in your password?");
-  let criteriaNumbers = confirm("Would you like to use numbers in your password?");
-  let passwordRange = [];
-  let passwordResult = [];
 
   if (criteriaLength) {
     //  Password length 8 < 128
-      passwordLength = prompt("How many characters would you like in your password?", "Number between 8 and 128");
-  if (passwordLength > 7 && passwordLength < 129) {
+    passwordLength = prompt("How many characters would you like in your password?", "Number between 8 and 128");
+    if (passwordLength > 7 && passwordLength < 129) {
       console.log(passwordLength, "--Thank you, that input is indeed within those parameters");
     } else {
       alert("Error: That value is not a # between 8 and 128")
@@ -26,30 +18,54 @@ function generatePassword() {
     }
   }
   if (!criteriaLength) {
-      passwordLength = Math.floor(Math.random() * (128 - 8) + 8);
-      console.log("User has not specified their own passwordLength, and so it will be ", passwordLength);
-    }
-
-
+    passwordLength = Math.floor(Math.random() * (128 - 8) + 8);
+    console.log("User has not specified their own passwordLength, and so it will be ", passwordLength);
+  }
+  //  Lowercase, uppercase, numeric, and/or special characters?
+  let criteriaUpper = confirm("Would you like to use Uppercase letters in your password?");
+  let criteriaLower = confirm("Would you like to use lowercase letters in your password?");
+  let criteriaSpecial = confirm("Would you like to use special characters (!@# etc) in your password?");
+  let criteriaNumbers = confirm("Would you like to use numbers in your password?");
+  let passwordRange = [];
+  let passwordResult = [];
+  // Building range of characters to use into an array
   if (criteriaUpper) {
     passwordResult = passwordResult.concat(upperChars);
+    console.log("Your randomized password may contain uppercase characters");
   }
   if (criteriaLower) {
     passwordResult = passwordResult.concat(lowerChars);
+    console.log("Your randomized password may contain lowercase characters");
   }
   if (criteriaSpecial) {
     passwordResult = passwordResult.concat(specialChars);
+    console.log("Your randomized password may contain special characters");
   }
   if (criteriaNumbers) {
     passwordResult = passwordResult.concat(numChars);
+    console.log("Your randomized password may contain numbers");
   }
+  // Confirmation of which criteria NOT chosen
+  if (!criteriaUpper) {
+    console.log("Your randomized password will not contain uppercase characters");
+  }
+  if (!criteriaLower) {
+    console.log("Your randomized password will not contain lowercase characters");
+  }
+  if (!criteriaSpecial) {
+    console.log("Your randomized password will not contain special characters");
+  }
+  if (!criteriaNumbers) {
+    console.log("Your randomized password will not contain numbers");
+  }
+  //Validate the input and make sure at least one character type has been selected
   if (!criteriaLength && !criteriaLower && !criteriaNumbers && !criteriaSpecial) {
-    alert("Please choose at least one option")   //Validate the input and make sure at least one character type has been selected
+    alert("No options selected to generate you a password, please try again and 'ok' at least one criteria.")
     return
   }
 
   for (let i = 0; i < passwordLength; i++) {
-    passwordRange.push (passwordResult[Math.floor(Math.random() * passwordResult.length)]);
+    passwordRange.push(passwordResult[Math.floor(Math.random() * passwordResult.length)]);
   }
 
   return passwordRange.join("");
