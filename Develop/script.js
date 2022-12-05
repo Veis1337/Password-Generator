@@ -3,17 +3,17 @@ function generatePassword() {
   let upperChars = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
   let lowerChars = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
   let specialChars = ["@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "=", "+"];
-  let numChars = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9",]
+  let numChars = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9",];
   //Prompt the user for the password criteria
   let criteriaLength = confirm("Would you like to specify your own password length?");
 
   if (criteriaLength) {
     //  Password length 8 < 128
-    passwordLength = prompt("How many characters would you like in your password?", "Number between 8 and 128");
+    passwordLength = prompt("How many characters would you like in your password? Input will be rounded up to the nearest whole number.", "Number between 8 and 128");
     if (passwordLength > 7 && passwordLength < 129) {
       console.log(passwordLength, "--Thank you, that input is indeed within those parameters");
     } else {
-      alert("Error: That value is not a # between 8 and 128")
+      alert("Error: That value is not a # between 8 and 128");
       return;
     }
   }
