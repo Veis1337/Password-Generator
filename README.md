@@ -13,7 +13,7 @@ N/A
 
 ## Usage
 
-![](/Develop/Screenshot.png)
+![](/Screenshot.png)
 
 Open the index.html file in a browser, or navigate to https://veis1337.github.io/Password-Generator.html
 Just click "Generate Password" and you will be prompted to enter your criteria.  Your randomly generated password will appear in the box on the screen.
